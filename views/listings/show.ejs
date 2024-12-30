@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Info</title>
+    <title>Listing Info</title>
 </head>
 <body>
-    <h3>Property Details</h3>
-    <ul><li><%= propertyInfo.title %></li>
-        <li><%= propertyInfo.description %></li>
-        <li><b>₹ <%= propertyInfo.price.toLocaleString("en-IN") %></b> night</li>
-        <li><%= propertyInfo.location %></li>
-        <li><%= propertyInfo.country %></li>
+    <h3>Listing Details</h3>
+    <ul><li><%= listing.title %></li>
+        <li><%= listing.description %></li>
+        <li><b>₹ <%= listing.price.toLocaleString("en-IN") %></b> night</li>
+        <li><%= listing.location %></li>
+        <li><%= listing.country %></li>
     </ul>
+    <a href="/listings/<%= listing.id%>/edit"><button>Edit</button></a>
+    <form method="POST" action="/listings/<%= listing.id%>?_method=DELETE">
+        <button>Delete</button>
+    </form>
 
 </body>
 </html>

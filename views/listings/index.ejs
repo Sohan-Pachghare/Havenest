@@ -7,9 +7,7 @@
 </head>
 <body>
     <h2>Listings</h2>
-    <form method="GET" action="listings/new">
-        <button>Create New Listing</button>
-    </form>
+    <a href="/listings/new"><button>Create New Listing</button></a>
     <% for(item of allListings) { %>
         <ul><a href="http://localhost:8080/listings/<%= item._id %>"><%= item.title %></a></ul>
     <% } %>

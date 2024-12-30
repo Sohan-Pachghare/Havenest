@@ -4,6 +4,7 @@ const path = require("path");
 const mongoose = require('mongoose');
 const Listing = require("./models/listing");
 const methodOverride = require("method-override");
+const { log } = require("console");
 
 
 app.set("view engine", "ejs");
@@ -33,17 +34,37 @@ app.get("/listings/new", (req, res) => {
 });
 //adding listing to db
 app.post("/listings", async (req, res) => {
-    let listingData = req.body.listing;
-    const newListing = new Listing(listingData);
-    newListing.save();
+    const newListing = new Listing(req.body.listing);
+    await newListing.save();
+    res.redirect("/listings");
+});
+
+//update opration
+app.get("/listings/:id/edit", async (req, res) => {
+    let id = req.params.id;
+    let listing = await Listing.findById(id);
+    res.render("./listings/edit.ejs", { listing });
+});
+
+app.put("/listings/:id", async (req, res) => {
+    let id = req.params.id;
+    await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    res.redirect(`/listings/${id}`);
+});
+
+//delete route
+app.delete("/listings/:id", async (req, res) => {
+    let id = req.params.id;
+    let deletedListing = await Listing.findByIdAndDelete(id);
+    console.log(deletedListing);
     res.redirect("/listings");
 });
 
 //show route (read operation)
 app.get("/listings/:id", async (req, res) => {
     let id = req.params.id;
-    let propertyInfo = await Listing.findById(id);
-    res.render("./listings/show.ejs", { propertyInfo });
+    let listing = await Listing.findById(id);
+    res.render("./listings/show.ejs", { listing });
 });
 
 
