@@ -7,13 +7,13 @@
 </head>
 <body>
     <h2>Create a New Listing</h2>
-    <form method="POST" action="/listings/?_method=PUT">
-        <input type="text" id="title" name="title" placeholder="listing[Title]" required><br>
-        <input type="text" placeholder="Description" name="listing[discription]" required><br>
-        <input type="text" placeholder="Image URL" name="listing[image]"><br>
-        <input type="number" placeholder="Price" name="listing[price]"><br>
-        <input type="text" placeholder="Location" name="listing[location]"><br>
-        <input type="text" placeholder="Country" name="listing[country]"><br>
+    <form method="POST" action="/listings">
+        <input name="listing[title]"        type="text"     placeholder="Title" required><br>
+        <input name="listing[description]"  type="text"     placeholder="Description"  required><br>
+        <input name="listing[image]"        type="text"     placeholder="Image URL" ><br>
+        <input name="listing[price]"        type="number"   placeholder="Price"><br>
+        <input name="listing[location]"     type="text"     placeholder="Location" ><br>
+        <input name="listing[country]"      type="text"     placeholder="Country" ><br>
         <br>
         <button type="submit">Create Listing</button>
 

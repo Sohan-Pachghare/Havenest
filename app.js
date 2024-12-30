@@ -6,9 +6,11 @@ const Listing = require("./models/listing");
 const methodOverride = require("method-override");
 
 
-app.set(express.urlencoded({extended : true}));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+app.use(express.urlencoded({extended : true}));
+app.use(methodOverride("_method"));
 
 main()
     .then(() => { console.log("connected to mongoDB"); })
@@ -29,13 +31,15 @@ app.get("/listings", async (req, res) => {
 app.get("/listings/new", (req, res) => {
     res.render("./listings/new.ejs");
 });
-
+//adding listing to db
 app.post("/listings", async (req, res) => {
-    let listing = req.body.listing;
-    console.log(listing);
-})
+    let listingData = req.body.listing;
+    const newListing = new Listing(listingData);
+    newListing.save();
+    res.redirect("/listings");
+});
 
-;//show route (read operation)
+//show route (read operation)
 app.get("/listings/:id", async (req, res) => {
     let id = req.params.id;
     let propertyInfo = await Listing.findById(id);
