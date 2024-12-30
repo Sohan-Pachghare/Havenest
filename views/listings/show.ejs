@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Info</title>
+</head>
+<body>
+    <h3>Property Details</h3>
+    <ul><li><%= propertyInfo.title %></li>
+        <li><%= propertyInfo.description %></li>
+        <li><b>₹ <%= propertyInfo.price.toLocaleString("en-IN") %></b> night</li>
+        <li><%= propertyInfo.location %></li>
+        <li><%= propertyInfo.country %></li>
+    </ul>
+
+</body>
+</html>

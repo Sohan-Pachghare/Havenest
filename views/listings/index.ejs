@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clone:Air_BNB</title>
+</head>
+<body>
+    <h2>Listings</h2>
+    <form method="GET" action="listings/new">
+        <button>Create New Listing</button>
+    </form>
+    <% for(item of allListings) { %>
+        <ul><a href="http://localhost:8080/listings/<%= item._id %>"><%= item.title %></a></ul>
+    <% } %>
+</body>
+</html>
