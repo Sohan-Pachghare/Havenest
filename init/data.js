@@ -118,7 +118,87 @@ const sampleListing = [
       "price": 29999,
       "location": "Swiss Alps",
       "country": "Switzerland"
-    }
+    },
+    {
+      "title": "Cozy Mountain Cabin",
+      "description": "A serene escape in the heart of the Rocky Mountains. Perfect for hiking and nature lovers.",
+      "image": "https://plus.unsplash.com/premium_photo-1684863505736-c2016528804a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D",
+      "price": 9960,
+      "location": "Aspen, Colorado",
+      "country": "United States"
+  },
+  {
+      "title": "Modern City Apartment",
+      "description": "A stylish and fully equipped apartment in the center of Tokyo, near public transport and attractions.",
+      "image": "https://plus.unsplash.com/premium_photo-1661963579906-f146cde83bf4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9reW9fYXBhcnRtZW50fGVufDB8fDB8fHww",
+      "price": 12450,
+      "location": "Shibuya, Tokyo",
+      "country": "Japan"
+  },
+  {
+      "title": "Beachfront Bungalow",
+      "description": "Relax in this charming bungalow steps away from a pristine beach in Bali. Stunning ocean views included.",
+      "image": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmVhY2glMjBidW5nYWxvd3xlbnwwfHwwfHx8Mg%3D%3D",
+      "price": 16600,
+      "location": "Kuta, Bali",
+      "country": "Indonesia"
+  },
+  {
+      "title": "Historic French Chateau",
+      "description": "Stay in a beautifully restored 18th-century chateau in the Loire Valley. Includes wine tastings.",
+      "image": "https://images.unsplash.com/photo-1705591932199-3f7ddd25bb1e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZyZW5jaCUyMGNoYXRlYXV8ZW58MHwwfDB8fHwy",
+      "price": 37350,
+      "location": "Loire Valley, France",
+      "country": "France"
+  },
+  {
+      "title": "Luxury NYC Loft",
+      "description": "An elegant loft in the heart of Manhattan. Close to Broadway, Times Square, and Central Park.",
+      "image": "https://images.unsplash.com/photo-1664261421791-c25c5760f577?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bnljJTIwbG9mdHxlbnwwfDB8MHx8fDI%3D",
+      "price": 29050,
+      "location": "Manhattan, New York City",
+      "country": "United States"
+  },
+  {
+      "title": "Rustic Countryside Cottage",
+      "description": "Experience the charm of the English countryside in this quaint, cozy cottage with a private garden.",
+      "image": "https://images.unsplash.com/photo-1727049405952-80384692c46a?q=80&w=850&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "price": 8300,
+      "location": "Cotswolds, England",
+      "country": "United Kingdom"
+  },
+  {
+      "title": "Luxury Penthouse with Pool",
+      "description": "An opulent penthouse in Dubai with a private infinity pool and breathtaking cityscape views.",
+      "image": "https://media.cnn.com/api/v1/images/stellar/prod/231204105923-como-residences-penthouse-1.jpg?c=original",
+      "price": 83000,
+      "location": "Downtown Dubai",
+      "country": "United Arab Emirates"
+  },
+  {
+      "title": "Tropical Treehouse",
+      "description": "Stay in a unique treehouse surrounded by lush rainforest in Costa Rica. Great for adventurers!",
+      "image": "https://media.istockphoto.com/id/1151789011/photo/scenic-view-of-tree-house-near-the-sea-on-nusa-penida.jpg?s=612x612&w=is&k=20&c=LHBold02gXrXxyvb11SWY07e6sQFSmg2e4tsOG2Dwz8=",
+      "price": 14940,
+      "location": "Monteverde, Costa Rica",
+      "country": "Costa Rica"
+  },
+  {
+      "title": "Scandinavian Lakeside Cabin",
+      "description": "A minimalist cabin on the shores of a pristine lake in Sweden. Perfect for relaxation and fishing.",
+      "image": "https://images.unsplash.com/photo-1482192505345-5655af888cc4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bGFrZXNpZGUlMjBjYWJpbnxlbnwwfDB8MHx8fDI%3D",
+      "price": 18260,
+      "location": "Stockholm Archipelago, Sweden",
+      "country": "Sweden"
+  },
+  {
+      "title": "Icelandic Geothermal Retreat",
+      "description": "A modern villa with a private geothermal pool. Experience the northern lights in luxury.",
+      "image": "https://images.unsplash.com/photo-1711111038475-0dc445eeb97e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGdlb3RoZXJtYWwlMjByZXRyZWF0fGVufDB8MHwwfHx8Mg%3D%3D",
+      "price": 41500,
+      "location": "Reykjavik, Iceland",
+      "country": "Iceland"
+  }
   ];
 
   module.exports = { data: sampleListing};

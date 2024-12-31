@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clone:Air_BNB</title>
-</head>
+<% layout("layouts/boilerplate.ejs") %>
 <body>
     <h2>Listings</h2>
     <a href="/listings/new"><button>Create New Listing</button></a>
+    <ul>
     <% for(item of allListings) { %>
-        <ul><a href="http://localhost:8080/listings/<%= item._id %>"><%= item.title %></a></ul>
+            <li><a href="http://localhost:8080/listings/<%= item._id %>"><%= item.title %></a></li>
     <% } %>
+    </ul>
 </body>
-</html>
