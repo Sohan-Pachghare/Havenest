@@ -1,10 +1,31 @@
 <% layout("layouts/boilerplate.ejs") %>
 <body>
     <h2>Listings</h2>
-    <a href="/listings/new"><button>Create New Listing</button></a>
-    <ul>
-    <% for(item of allListings) { %>
-            <li><a href="http://localhost:8080/listings/<%= item._id %>"><%= item.title %></a></li>
-    <% } %>
-    </ul>
+    <!-- below feature in add in navbar so we dont need it here -->
+    <!-- <a href="/listings/new"><button>Create New Listing</button></a> -->
+
+    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1">
+        <% for(listing of allListings) { %>
+          <a class="listing-link" href="/listings/<%= listing._id %>">
+            <div class="card col" >
+                <img 
+                  src="<%= listing.image %>" 
+                  class="card-img-top" 
+                  style="height: 16.5rem;" 
+                  alt="listing img"
+                  />
+                <div class="card-img-overlay">sohan</div>  
+                <div class="card-body">
+                  <p>
+                    <b><%= listing.title %></b><br>
+                    <p class="card-text"> <%= listing.description %></p>
+                    <b>₹ <%= listing.price.toLocaleString("en-IN") %> night</b>
+                  </p>
+                </div>
+              </div>
+            </a>
+        <% } %>
+        
+    </div>
+
 </body>
