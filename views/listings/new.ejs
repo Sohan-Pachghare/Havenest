@@ -1,7 +1,7 @@
 <% layout("layouts/boilerplate.ejs") %>
 <body>
     
-    <form method="POST" action="/listings" > 
+    <form method="POST" action="/listings" class="needs-validation"  novalidate > 
         <div class="row">
             <div class="col-8 offset-sm-3 offset-1"><!-- offset-3 moves "form" 3 col to right -->
                 <br>
@@ -9,41 +9,59 @@
                 <br>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input name="listing[title]"  placeholder="Cozy Beach House"  type="text" class="form-control"> 
+                    <input name="listing[title]"  placeholder="Cozy Beach House"  type="text" class="form-control" required> 
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea name="listing[description]"  placeholder="Perfect for a relaxing..."   type="text" class="form-control"></textarea>
+                    <textarea name="listing[description]"  placeholder="Perfect for a relaxing..."   type="text" class="form-control" required></textarea>
+                    <div class="invalid-feedback">
+                        Please provide description
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image URL</label>
-                    <input name="listing[image]"  placeholder="https://images.unsplash.com/your-image-url"  type="text" class="form-control">
+                    <input name="listing[image]"  placeholder="https://images.example.com/your-image-url"  type="text" class="form-control">
                 </div>
-                <!-- <div class="mb-3">
-                    <label for="price" class="form-label">Price</label>
-                    <input name="listing[price]"  placeholder="Price"  type="number" class="form-control">
-                </div>
-                <div class="mb-4">
-                    <label for="country" class="form-label">Country</label>
-                    <input name="listing[country]"  placeholder="Country"  type="text" class="form-control">
-                </div> -->
                 <!-- merging price and country in one row -->
                 <div class="row">
                     <div class="col-md-4">
                         <label for="price" class="form-label">Price</label>
-                        <input name="listing[price]"  placeholder="2999"  type="number" class="form-control">    
+                        <input name="listing[price]"  placeholder="2999"   class="form-control" required>    
+                        <div class="invalid-feedback">
+                            Invalid price 
+                        </div>
                     </div>
                     <div class="col-md-8">
                         <label for="country" class="form-label">Country</label>
-                        <input name="listing[country]"  placeholder="India"  type="text" class="form-control">
+                        <input name="listing[country]"  placeholder="India"  type="text" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Invalid country
+                        </div>
                     </div>
                  </div>
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
-                    <input name="listing[location]"  placeholder="Goa, North Goa."  type="text" class="form-control">
+                    <input name="listing[location]"  placeholder="Goa, North Goa."  type="text" class="form-control" required>
+                    <div class="invalid-feedback">
+                       Invalid location
+                    </div>
                 </div>
                 <button type="submit" class="btn add-btn mb-4">Add</button>
             </div>    
         </div>
     </form>
 </body>
+
+<!-- seprate price and country 
+<div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input name="listing[price]"  placeholder="Price"  type="number" class="form-control">
+</div>
+<div class="mb-4">
+    <label for="country" class="form-label">Country</label>
+    <input name="listing[country]"  placeholder="Country"  type="text" class="form-control">
+</div> 
+-->

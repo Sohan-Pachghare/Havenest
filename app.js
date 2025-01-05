@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 const Listing = require("./models/listing");
 const methodOverride = require("method-override");
 const ejsMate = require('ejs-mate');
+const wrapAsync = require("./utils/wrapAsync");
+const ExpressError = require("./utils/ExpressError");
+const listingSchema = require("./schema.js");
 
 main()
     .then(() => { console.log("connected to mongoDB"); })
@@ -14,62 +17,94 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
 }
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-app.use(express.urlencoded({extended : true}));
+// Body parsing middleware 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// other middleware
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
+// View engine setup
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
+//root route
 app.get("/", (req, res) => {
     res.send("on root route");
 });
+
+// const validateListing = (req, res, next) => {
+//     let { error } = listingSchema.validate(req.body);
+//     let errMsg = error.details.map((el) =>  el.message ).join(", ");
+//         if(error) {
+//             throw new ExpressError(400, errMsg);
+//         } else {
+//             next();
+//         }
+// };
+
 //index route
-app.get("/listings", async (req, res) => {
+app.get("/listings", wrapAsync(async (req, res) => {
     const allListings = await Listing.find({});
     res.render("./listings/index.ejs", { allListings });
-});
+}));
 
 // new route 
 //put this route fist than read route because : /listings/new is being interpreted as "/listings/:id" where new is treated as an id
 app.get("/listings/new", (req, res) => {
     res.render("./listings/new.ejs");
 });
-//adding listing to db
-app.post("/listings", async (req, res) => {
-    const newListing = new Listing(req.body.listing);
-    await newListing.save();
-    res.redirect("/listings");
-});
 
-//update opration
-app.get("/listings/:id/edit", async (req, res) => {
+//adding listing to db
+app.post("/listings", wrapAsync(async (req, res, next) => {
+        console.log(req.body);
+        const newListing = new Listing(req.body.listing);
+        // console.log(req.body.listing)
+        await newListing.save();
+        res.redirect("/listings");
+    })
+);
+
+//update (edit) opration
+app.get("/listings/:id/edit",  wrapAsync(async (req, res) => {
     let id = req.params.id;
     let listing = await Listing.findById(id);
     res.render("./listings/edit.ejs", { listing });
-});
+}));
 
-app.put("/listings/:id", async (req, res) => {
+app.put("/listings/:id", wrapAsync(async (req, res) => {
     let id = req.params.id;
     await Listing.findByIdAndUpdate(id, { ...req.body.listing });
     res.redirect(`/listings/${id}`);
-});
+}));
 
 //delete route
-app.delete("/listings/:id", async (req, res) => {
+app.delete("/listings/:id",  wrapAsync(async (req, res) => {
     let id = req.params.id;
     let deletedListing = await Listing.findByIdAndDelete(id);
     console.log(deletedListing);
     res.redirect("/listings");
-});
+}));
 
 //show route (read operation)
-app.get("/listings/:id", async (req, res) => {
+app.get("/listings/:id",  wrapAsync(async (req, res) => {
     let id = req.params.id;
     let listing = await Listing.findById(id);
     res.render("./listings/show.ejs", { listing });
+}));
+
+// res for * (all) other req
+app.all("*", (req, res, next) => {
+    next(new ExpressError(404, "Page not found!"));
 });
 
+// error handling middleware
+app.use((err, req, res, next) => {
+    let { status=500, message="somthing went wrong !" } = err;
+    res.status(status).render("./listings/error.ejs", { message });
+});
 
 // app.get("/sample", async (req, res) => {
 //     let listing1 =  Listing({

@@ -82,8 +82,9 @@ body {
     opacity: 0;
 }
 .card-img-overlay:hover {
-    opacity: 0.2;
-    background-color: white ;
+    opacity: 0.03;
+    background-color: darkblue ;
+    border-radius: 1rem;
 }
 /* new listing add-btn */
 .add-btn, 
