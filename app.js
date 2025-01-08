@@ -7,7 +7,7 @@ const methodOverride = require("method-override");
 const ejsMate = require('ejs-mate');
 const wrapAsync = require("./utils/wrapAsync");
 const ExpressError = require("./utils/ExpressError");
-const listingSchema = require("./schema.js");
+const listingSchema = require("./schema");
 
 main()
     .then(() => { console.log("connected to mongoDB"); })
@@ -35,15 +35,16 @@ app.get("/", (req, res) => {
     res.send("on root route");
 });
 
-// const validateListing = (req, res, next) => {
-//     let { error } = listingSchema.validate(req.body);
-//     let errMsg = error.details.map((el) =>  el.message ).join(", ");
-//         if(error) {
-//             throw new ExpressError(400, errMsg);
-//         } else {
-//             next();
-//         }
-// };
+// validateListing middleware
+const validateListing = (req, res, next) => {
+    let {error} = listingSchema.validate(req.body);
+    if(error) {
+        let msg = error.details.map((el) => el.message).join(", ")
+        throw new ExpressError(400, error.message);
+    } else {
+        next();
+    }
+}
 
 //index route
 app.get("/listings", wrapAsync(async (req, res) => {
@@ -57,11 +58,9 @@ app.get("/listings/new", (req, res) => {
     res.render("./listings/new.ejs");
 });
 
-//adding listing to db
-app.post("/listings", wrapAsync(async (req, res, next) => {
-        console.log(req.body);
+//adding new listing to db
+app.post("/listings", validateListing, wrapAsync(async (req, res, next) => {
         const newListing = new Listing(req.body.listing);
-        // console.log(req.body.listing)
         await newListing.save();
         res.redirect("/listings");
     })
@@ -74,7 +73,7 @@ app.get("/listings/:id/edit",  wrapAsync(async (req, res) => {
     res.render("./listings/edit.ejs", { listing });
 }));
 
-app.put("/listings/:id", wrapAsync(async (req, res) => {
+app.put("/listings/:id", validateListing, wrapAsync(async (req, res) => {
     let id = req.params.id;
     await Listing.findByIdAndUpdate(id, { ...req.body.listing });
     res.redirect(`/listings/${id}`);
@@ -95,6 +94,17 @@ app.get("/listings/:id",  wrapAsync(async (req, res) => {
     res.render("./listings/show.ejs", { listing });
 }));
 
+//Reviews
+app.post("listings/:id/reviwes", async (req, res) => {
+    let { id } = req.params;
+    console.log(id);
+    //find listing in db
+    // let result = await Listing.findById(id);
+    //add review to listing 
+    
+
+})
+
 // res for * (all) other req
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page not found!"));
@@ -102,7 +112,7 @@ app.all("*", (req, res, next) => {
 
 // error handling middleware
 app.use((err, req, res, next) => {
-    let { status=500, message="somthing went wrong !" } = err;
+    let { status=500, message="somthing went wrong at server side !" } = err;
     res.status(status).render("./listings/error.ejs", { message });
 });
 

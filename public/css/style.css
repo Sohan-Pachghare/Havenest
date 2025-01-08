@@ -86,10 +86,12 @@ body {
     background-color: darkblue ;
     border-radius: 1rem;
 }
+
 /* new listing add-btn */
 .add-btn, 
 .edit-btn, 
-.show-edit-btn {
+.show-edit-btn,
+.btn-review {
     background-color: #fe424d !important;
     color: white !important;
     border: none !important;
