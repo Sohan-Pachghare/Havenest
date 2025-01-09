@@ -7,7 +7,9 @@ const methodOverride = require("method-override");
 const ejsMate = require('ejs-mate');
 const wrapAsync = require("./utils/wrapAsync");
 const ExpressError = require("./utils/ExpressError");
-const listingSchema = require("./schema");
+const { listingSchema, reviewSchema } = require("./schema");
+const Review  = require("./models/review");
+
 
 main()
     .then(() => { console.log("connected to mongoDB"); })
@@ -37,14 +39,25 @@ app.get("/", (req, res) => {
 
 // validateListing middleware
 const validateListing = (req, res, next) => {
-    let {error} = listingSchema.validate(req.body);
+    const {error} = listingSchema.validate(req.body);
     if(error) {
-        let msg = error.details.map((el) => el.message).join(", ")
-        throw new ExpressError(400, error.message);
+        const msg = error.details.map((el) => el.message).join(", ");
+        throw new ExpressError(400, msg);
     } else {
         next();
     }
 }
+// validateReview middleware
+const validateReview = (req, res, next) => {
+    const { error }  = reviewSchema.validate(req.body);
+    if(error) {
+        let msg = error.details.map((el) => el.message).join(", ");
+        throw new ExpressError(400, msg);
+    } else {
+        next();
+    }
+}
+
 
 //index route
 app.get("/listings", wrapAsync(async (req, res) => {
@@ -90,20 +103,23 @@ app.delete("/listings/:id",  wrapAsync(async (req, res) => {
 //show route (read operation)
 app.get("/listings/:id",  wrapAsync(async (req, res) => {
     let id = req.params.id;
-    let listing = await Listing.findById(id);
+    let listing = await Listing.findById(id).populate("reviews");
     res.render("./listings/show.ejs", { listing });
 }));
 
 //Reviews
-app.post("listings/:id/reviwes", async (req, res) => {
-    let { id } = req.params;
-    console.log(id);
-    //find listing in db
-    // let result = await Listing.findById(id);
-    //add review to listing 
-    
-
-})
+// new review
+app.post("/listings/:id/reviews", validateReview, wrapAsync( async (req, res) => {
+    // find listing in db
+    let listing = await Listing.findById(req.params.id);
+    //save review to Reviews model
+    let newReview = new Review(req.body.review);
+    await newReview.save();
+    // add review to listing 
+    listing.reviews.push(newReview);
+    await listing.save();
+    res.redirect(`/listings/${listing.id}`);
+}));
 
 // res for * (all) other req
 app.all("*", (req, res, next) => {
@@ -116,21 +132,29 @@ app.use((err, req, res, next) => {
     res.status(status).render("./listings/error.ejs", { message });
 });
 
-// app.get("/sample", async (req, res) => {
-//     let listing1 =  Listing({
-//         title: "Maniratna",
-//         description: "Bigest in Vidharbha",
-//         image: "",
-//         price: "2500",
-//         location: "on Nagpur-Mumbai highway",
-//         country: "India"
 
-//     });
-//     await listing1.save();
-//     console.log("Sample is saved");
-//     res.send("Sucessful");
-// });
 
 app.listen(8080, () => {
     console.log("server is listening on port 8080");
 });
+
+// Dumping yard
+/* 
+
+app.get("/sample", async (req, res) => {
+    let listing1 =  Listing({
+        title: "Maniratna",
+        description: "Bigest in Vidharbha",
+        image: "",
+        price: "2500",
+        location: "on Nagpur-Mumbai highway",
+        country: "India"
+
+    });
+    await listing1.save();
+    console.log("Sample is saved");
+    res.send("Sucessful");
+});
+
+
+*/

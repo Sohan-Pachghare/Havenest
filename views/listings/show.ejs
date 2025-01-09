@@ -1,65 +1,65 @@
-<% layout("layouts/boilerplate.ejs") %>
+<% layout("./layouts/boilerplate.ejs") %>
 <body>
-    <div class="row">
-        <div class="col-8 offset-lg-4 offset-md-2">
-            <h3><%= listing.title %></h3>
-        </div>
-            <div class="card col-6 offset-lg-4 offset-md-2 " style="width: 31.25rem;">
-                <img src="<%= listing.image %>" class="card-img-top show-img" style="width: 31.25rem;" alt="listing img">
-                <div class="card-body">
-                <p class="card-text">
-                    <!-- <b><%= listing.title %></b><br> -->
-                    <%= listing.description %> <br>
-                    <b>₹ <%= listing.price.toLocaleString("en-IN") %></b> night <br>
-                    <%= listing.location %> <br>
-                    <%= listing.country %>
-                </p>
-                </div>
-                <br>
-                <div class="btns ">
-                    <a href="/listings/<%= listing.id%>/edit"><button class="btn show-edit-btn">Edit</button></a>
-                    <form method="POST" action="/listings/<%= listing.id%>?_method=DELETE" >
-                        <button class="btn btn-dark offset-4">Delete</button>
-                    </form>
-                </div>
-                <!-- Review form -->
-                <hr>
-                <div class="mb-3">
-                    <h4 class="mb-3">Leave a review</h4>
-                    <form method="POST" action="/listings/<%= listing.id %>/reviews" class="needs-validation" novalidate >
-                        <div class="mb-3">
-                            <label for="rating" class="form-label">Rating</label>
-                            <input 
-                                type="range" 
-                                min="1" 
-                                max="5" 
-                                id="rating"
-                                name="review[rating]" 
-                                class="form-range"
-                                required
-                            >
-                            <div class="d-flex justify-content-between">
-                                <span>1</span>
-                                <span>2</span>
-                                <span>3</span>
-                                <span>4</span>
-                                <span>5</span>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <h3 class="text-center mb-4"><%= listing.title %></h3>
+                
+                <div class="card mb-4">
+                    <img src="<%= listing.image %>" class="card-img-top" alt="listing img">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <%= listing.description %> <br>
+                            <b class="fs-5">₹ <%= listing.price.toLocaleString("en-IN") %></b> <small>per night</small><br>
+                            <i class="bi bi-geo-alt"></i> <%= listing.location %>, <%= listing.country %>
+                        </p>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between p-3">
+                        <a href="/listings/<%= listing.id%>/edit" class="btn show-edit-btn">Edit</a>
+                        <form method="POST" action="/listings/<%= listing.id%>?_method=DELETE">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+
+                    <!-- Review Section -->
+                    <div class="p-3">
+                        <h4 class="mb-3">Leave a review</h4>
+                        <form method="POST" action="/listings/<%= listing.id %>/reviews" class="needs-validation mb-4" novalidate>
+                            <div class="mb-3">
+                                <label for="rating" class="form-label">Rating</label>
+                                <input type="range" min="1" max="5" id="rating" name="review[rating]" class="form-range" required>
+                                <div class="d-flex justify-content-between small text-muted">
+                                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="comment" class="form-label">Comment</label>
-                            <textarea 
-                                id="comment"
-                                name="review[comment]" 
-                                class="form-control"
-                                required
-                            ></textarea>
-                            <div class="invalid-feedback">
-                                Please provide a review comment.
+                            
+                            <div class="mb-3">
+                                <label for="comment" class="form-label">Comment</label>
+                                <textarea id="comment" name="review[comment]" class="form-control" required></textarea>
+                                <div class="invalid-feedback">Please provide a review comment.</div>
                             </div>
+                            <button class="btn btn-success w-100">Submit Review</button>
+                        </form>
+
+                        <!-- Reviews List -->
+                        <h4 class="mb-3">All Reviews</h4>
+                        <div class="reviews-container">
+                            <% for(review of listing.reviews) { %>
+                                <div class="card mb-3">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between">
+                                            <h6 class="card-subtitle text-muted">
+                                                <%= review.rating %> <i class="bi bi-star-fill text-warning"></i>
+                                            </h6>
+                                            <small class="text-muted">Anonymous User</small>
+                                        </div>
+                                        <p class="card-text mt-2"><%= review.comment %></p>
+                                    </div>
+                                </div>
+                            <% } %>
                         </div>
-                        <button class="btn btn-outline-dark">Submit Review</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
