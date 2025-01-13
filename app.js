@@ -61,24 +61,18 @@ passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
+//throw alerts
 app.use((req, res , next) => {
     res.locals.success = req.flash("success")
-    res.locals.errorMsg = req.flash("errorMsg")
+    res.locals.error = req.flash("error")
     next()
 })
 
-app.get("/demouser", async (req, res) => {
-    let newUser = new User({
-        email: "example@email.com",
-        username: "demoUser1",
-    });
-    const result =  await User.register(newUser, "passwordGoesHere");
-    res.send(result);
-})
+
 // Router object  parent routes
 app.use("/listings", routerListing)
 app.use("/listings/:id/reviews", routerReview)
-app.use("/user", routerUser)
+app.use("/", routerUser)
 
 // route for invalid req 
 app.all("*", (req, res, next) => {
