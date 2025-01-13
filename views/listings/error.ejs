@@ -6,4 +6,12 @@
     <div class="alert alert-danger mt-3" role="alert">
         <%= message %>
       </div>
+      <script>
+        // Redirect to the previous page on refresh
+        window.onload = function() {
+            if (performance.navigation.type === 1) {
+                history.back();
+            }
+        };
+    </script>
 </body>
