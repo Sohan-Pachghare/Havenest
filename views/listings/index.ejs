@@ -1,28 +1,40 @@
-<% layout("layouts/boilerplate.ejs") %> 
-<body>
-    <h2>Listings</h2>
-    <div class="row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1">
+<% layout("layouts/boilerplate.ejs") %>
+
+  <body>
+    <div class="container mt-5">
+      <h2 class="display-5 mb-4 text-center">Explore Listings</h2>
+
+      <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 g-4">
         <% for(listing of allListings) { %>
-          <a class="listing-link" href="/listings/<%= listing._id %>">
-            <div class="card col listing-card" >
-                <img 
-                  src="<%= listing.image %>" 
-                  class="card-img-top" 
-                  style="height: 16.5rem;" 
-                  alt="listing img"
-                  />
-                <div class="card-img-overlay"></div>  
-                <div class="card-body">
-                  <p>
-                    <b><%= listing.title %></b><br>
-                    <p class="card-text"> <%= listing.description %></p>
-                    <b>₹ <%= listing.price.toLocaleString("en-IN") %> night</b>
+          <div class="col">
+            <a href="/listings/<%= listing._id %>" class="text-decoration-none">
+              <div class="card h-100 border-0 shadow-sm">
+                <img src="<%= listing.image %>" class="card-img-top object-fit-cover" style="height: 16.5rem;"
+                  alt="listing image">
+
+                <div class="card-body p-3">
+                  <h5 class="card-title text-dark mb-1">
+                    <%= listing.title %>
+                  </h5>
+                  <p class="card-text text-muted small mb-2 text-truncate">
+                    <%= listing.description %>
                   </p>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="fw-bold text-dark">₹ <%= listing.price.toLocaleString("en-IN") %></span>
+                    <small class="text-muted">per night</small>
+                  </div>
+
+                  <div class="mt-2 small text-muted">
+                    <i class="bi bi-geo-alt"></i>
+                    <%= listing.location %>, <%= listing.country %>
+                  </div>
                 </div>
               </div>
             </a>
-        <% } %>
-        
+          </div>
+          <% } %>
+      </div>
     </div>
 
-</body>
+  </body>

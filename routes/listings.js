@@ -3,7 +3,7 @@ const router = express.Router()
 const Listing = require("../models/listing");
 const { listingSchema } = require("../schema");
 const wrapAsync = require("../utils/wrapAsync");
-
+const { isLoggedIn } = require("../middleware");
 
 // validateListing middleware
 const validateListing = (req, res, next) => {
@@ -22,13 +22,12 @@ router.get("/", wrapAsync(async (req, res) => {
     res.render("./listings/index.ejs", { allListings });
 }));
 
-// new route 
+// Create route 
 //put this route fist than read route because  /listings/new is being interpreted as "/listings/:id" where new is treated as an id
-router.get("/new", (req, res) => {
+router.get("/new", isLoggedIn, (req, res) => {
     res.render("./listings/new.ejs");
 });
 
-//create route
 router.post("/", validateListing, wrapAsync(async (req, res) => {
     const newListing = new Listing(req.body.listing);
     await newListing.save();
@@ -36,10 +35,9 @@ router.post("/", validateListing, wrapAsync(async (req, res) => {
     res.redirect("/listings");
 }));
 
-//update opration
-router.get("/:id/edit", wrapAsync(async (req, res) => {
-    let id = req.params.id;
-    let listing = await Listing.findById(id);
+// Update route
+router.get("/:id/edit", isLoggedIn, wrapAsync(async (req, res) => {
+    let listing = await Listing.findById(req.params.id);
     if(!listing) {
         req.flash("errorMsg", "Requested Listing Does Not Exist.")
         res.redirect("/listings")
@@ -48,7 +46,6 @@ router.get("/:id/edit", wrapAsync(async (req, res) => {
     }
 }));
 
-//update route
 router.put("/:id", validateListing, wrapAsync(async (req, res) => {
     let id = req.params.id;
     await Listing.findByIdAndUpdate(id, { ...req.body.listing });
@@ -56,7 +53,8 @@ router.put("/:id", validateListing, wrapAsync(async (req, res) => {
     res.redirect(`/listings/${id}`);
 }));
 
-//delete route
+
+// Delete route
 router.delete("/:id", wrapAsync(async (req, res) => {
     let deletedListing = await Listing.findByIdAndDelete(req.params.id);
     console.log(deletedListing);
@@ -64,7 +62,8 @@ router.delete("/:id", wrapAsync(async (req, res) => {
     res.redirect("/listings");
 }));
 
-//show route (read operation)
+
+// Read route (Show an Listing in Detail)
 router.get("/:id", wrapAsync(async (req, res) => {
     const id = req.params.id;
     const listing = await Listing.findById(id).populate("reviews");

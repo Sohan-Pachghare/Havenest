@@ -10,9 +10,9 @@ const routerReview = require("./routes/reviews");
 const session = require("express-session");
 const flash = require("connect-flash");
 const User = require('./models/user');
-const LocalStrategy = require("passport-local")
-const passport = require("passport")
-const routerUser = require("./routes/user")
+const LocalStrategy = require("passport-local");
+const passport = require("passport");
+const routerUser = require("./routes/user");
 
 main()
     .then(() => { console.log("connected to mongoDB"); })
@@ -56,7 +56,7 @@ app.use(flash())
 
 // Authentication
 app.use(passport.initialize());
-passport.session();
+app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
@@ -65,6 +65,7 @@ passport.deserializeUser(User.deserializeUser())
 app.use((req, res , next) => {
     res.locals.success = req.flash("success")
     res.locals.error = req.flash("error")
+    res.locals.currentUser = req.user;
     next()
 })
 
