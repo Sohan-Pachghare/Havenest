@@ -6,32 +6,37 @@ const wrapAsync = require("../utils/wrapAsync");
 const { isLoggedIn, isOwner, validateListing } = require("../middleware");
 const ctrlListings = require("../Controllers/listings");
 
-//read route
-router.get("/", wrapAsync(ctrlListings.index));
+router.route("/")
+    .get(wrapAsync(ctrlListings.index))
+    .post(
+        isLoggedIn,
+        validateListing,
+        wrapAsync(ctrlListings.createListing)
+    )
 
-// Create route 
-//put this route fist than read route because  /listings/new is being interpreted as "/listings/:id" where new is treated as an id
-router.get("/new", isLoggedIn, ctrlListings.renderNewForm );
+//put this route fist, because  /listings/new is being interpreted as "/listings/:id" where "new" is treated as an "id"
+router.get("/new", isLoggedIn, ctrlListings.renderNewForm);
 
-router.post("/",
-    isLoggedIn,
-    validateListing,
-    wrapAsync(ctrlListings.createListing));
+router.route("/:id")
+    .put( 
+        isLoggedIn, 
+        isOwner, 
+        validateListing, 
+        wrapAsync(ctrlListings.editListing)
+    )
+    .delete(
+        isLoggedIn, 
+        isOwner, 
+        wrapAsync(ctrlListings.deletedListing)
+    )
+    .get(wrapAsync(ctrlListings.renderShow));
 
 // Update route
 router.get("/:id/edit",
     isLoggedIn,
     isOwner,
-    wrapAsync(ctrlListings.renderEditForm));
+    wrapAsync(ctrlListings.renderEditForm)
+);
 
-router.put("/:id", isLoggedIn, isOwner, validateListing, wrapAsync(ctrlListings.editListing));
-
-
-// Delete route
-router.delete("/:id", isLoggedIn, isOwner, wrapAsync(ctrlListings.deletedListing));
-
-
-// Read route (Show an Listing in Detail)
-router.get("/:id", wrapAsync(ctrlListings.renderShow));
 
 module.exports = router;
