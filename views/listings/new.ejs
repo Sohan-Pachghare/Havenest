@@ -1,7 +1,7 @@
 <% layout("layouts/boilerplate.ejs") %>
 <body>
     
-    <form method="POST" action="/listings" class="needs-validation"  novalidate > 
+    <form method="POST" action="/listings" class="needs-validation"  novalidate enctype="multipart/form-data" > 
         <div class="row">
             <div class="col-8 offset-sm-3 offset-1"><!-- offset-3 moves "form" 3 col to right -->
                 <br>
@@ -22,8 +22,8 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label">Image URL</label>
-                    <input name="listing[image]"  placeholder="https://images.example.com/your-image-url"  type="text" class="form-control">
+                    <label for="image" class="form-label">Upload Image</label>
+                    <input name="listing[image]" type="file" class="form-control">
                 </div>
                 <!-- merging price and country in one row -->
                 <div class="row">

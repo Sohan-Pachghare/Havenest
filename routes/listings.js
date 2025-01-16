@@ -5,14 +5,19 @@ const { listingSchema } = require("../schema");
 const wrapAsync = require("../utils/wrapAsync");
 const { isLoggedIn, isOwner, validateListing } = require("../middleware");
 const ctrlListings = require("../Controllers/listings");
+const multer  = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 router.route("/")
     .get(wrapAsync(ctrlListings.index))
-    .post(
-        isLoggedIn,
-        validateListing,
-        wrapAsync(ctrlListings.createListing)
-    )
+    // .post(
+    //     isLoggedIn,
+    //     validateListing,
+    //     wrapAsync(ctrlListings.createListing)
+    // )
+    .post(upload.single('avatar'), (req, res) => {
+        res.send(req.file)
+    })
 
 //put this route fist, because  /listings/new is being interpreted as "/listings/:id" where "new" is treated as an "id"
 router.get("/new", isLoggedIn, ctrlListings.renderNewForm);
