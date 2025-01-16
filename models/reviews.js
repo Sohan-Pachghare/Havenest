@@ -1,3 +1,4 @@
+const { ref } = require("joi");
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
@@ -16,6 +17,10 @@ const reviewSchema = new Schema({
         type: Date,
         default: Date.now,
     },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    }
 });
 
 //model name's first letter always "capital"

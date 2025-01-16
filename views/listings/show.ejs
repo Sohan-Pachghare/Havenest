@@ -8,6 +8,7 @@
                 <div class="card  listing-card mb-4">
                     <img src="<%= listing.image %>" class="card-img-top" alt="listing img">
                     <div class="card-body">
+                        <b>Owner : <%= listing.owner.username %></b>
                         <p class="card-text">
                             <%= listing.description %> <br>
                             <b class="fs-5">₹ <%= listing.price.toLocaleString("en-IN") %></b> <small>per night</small><br>
@@ -15,15 +16,17 @@
                         </p>
                     </div>
                     
+                    <% if(currentUser && currentUser._id.equals(listing.owner._id)) { %>
                     <div class="d-flex justify-content-between p-3">
                         <a href="/listings/<%= listing.id%>/edit" class="btn btn-dark">Edit</a>
                         <form method="POST" action="/listings/<%= listing.id%>?_method=DELETE">
                             <button class="btn btn-danger">Delete</button>
                         </form>
                     </div>
-
+                    <% } %>
                     <!-- Review Section -->
                     <div class="p-3">
+                        <% if(currentUser) { %>
                         <h4 class="mb-3">Leave a review</h4>
                         <form method="POST" action="/listings/<%= listing.id %>/reviews" class="needs-validation mb-4" novalidate>
                             <div class="mb-3">
@@ -41,7 +44,7 @@
                             </div>
                             <button class="btn btn-outline-dark">Submit Review</button>
                         </form>
-
+                        <% } %>
                         <!-- Reviews List -->
                         <h4 class="mb-3">All Reviews</h4>
                         <div class="reviews-container">
@@ -50,10 +53,10 @@
                                 <div class="card col-lg-5 ms-2 mb-3">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
+                                            <b class="text-muted">@<%= review.author.username %></b>
                                             <h6 class="card-subtitle text-muted">
                                                 <%= review.rating %> ⭐
                                             </h6>
-                                            <small class="text-muted">Anonymous User</small>
                                         </div>
                                         <p class="card-text mt-2"><%= review.comment %></p>
                                         <form method="POST" action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=DELETE">
