@@ -15,12 +15,12 @@ router.route("/")
     //     validateListing,
     //     wrapAsync(ctrlListings.createListing)
     // )
-    .post(upload.single('avatar'), (req, res) => {
+    .post(upload.single("listing[image]"), (req, res) => {
         res.send(req.file)
     })
 
 //put this route fist, because  /listings/new is being interpreted as "/listings/:id" where "new" is treated as an "id"
-router.get("/new", isLoggedIn, ctrlListings.renderNewForm);
+router.get("/new",  ctrlListings.renderNewForm); // add => isLoggedIn,
 
 router.route("/:id")
     .put( 
