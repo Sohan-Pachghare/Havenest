@@ -1,6 +1,5 @@
-if(process.env.NODE_MODULE != "production") {
-    require('dotenv').config()
-    console.log(process.env)
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config({ path: ".env " })
 }
 
 const express = require("express");
@@ -67,7 +66,7 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 //throw alerts
-app.use((req, res , next) => {
+app.use((req, res, next) => {
     res.locals.success = req.flash("success")
     res.locals.error = req.flash("error")
     res.locals.currentUser = req.user;
