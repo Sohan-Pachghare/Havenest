@@ -50,5 +50,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <!-- custom js -->
     <script src="/js/script.js"></script>
+    <script>
+        // toggle displaying of tax
+        let taxToggle = document.getElementById("flexSwitchCheckReverse");
+        taxToggle.addEventListener("click", () => {
+        let taxInfo = document.getElementsByClassName("taxInfo");
+        for(info of taxInfo) {
+            if(info.style.display !== "inline") {
+            info.style.display = "inline";
+            } else {
+            info.style.display = "none";
+            }
+        }
+        });
+    </script>
 </body>
 </html>

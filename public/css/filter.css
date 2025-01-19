@@ -1,7 +1,7 @@
 #filters {
-    
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     margin-top: 5rem;
     padding: 0 !important;
 }
@@ -11,7 +11,6 @@
     border: none;
     padding: 0;
     cursor: pointer;
-    align-items: center;
     text-align: center;
     opacity: 0.5;
     margin-left: 1.5rem;
@@ -21,7 +20,23 @@
     opacity: 1;
 }
 
+.filter-button p {
+    margin-bottom: 0;
+}
+
 .filter p {
     font-size: 0.8rem;
 }
 
+/* tax button "air_bnb/views/includes/filter.ejs" */
+.taxInfo {
+    display: none;
+}
+
+.tax-toggler {
+    border: 1px solid rgb(128, 128, 128);
+    border-radius: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem;
+    display: flex;
+}

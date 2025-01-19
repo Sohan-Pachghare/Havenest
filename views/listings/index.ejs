@@ -20,9 +20,10 @@
                     <%= listing.description %>
                   </p>
 
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span class="fw-bold text-dark">₹ <%= listing.price.toLocaleString("en-IN") %></span>
-                    <small class="text-muted">per night</small>
+                  <div class="d-flex  align-items-center">
+                    <span class="fw-bold text-dark">₹&nbsp;<%= listing.price.toLocaleString("en-IN") %></span>
+                    <small class="taxInfo text-muted">&nbsp;+18% &nbsp; GST</small>
+                    <small class="text-muted ms-auto">per night</small>
                   </div>
 
                   <div class="mt-2 small text-muted">

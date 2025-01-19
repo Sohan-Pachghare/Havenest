@@ -105,7 +105,27 @@ body {
     display: flex;
 }
 
-/* tax button "air_bnb/views/includes/filter.ejs" */
-.tax-toggle {
+.fixed-top {
+    z-index: 1 !important;
+}
+
+
+.search-bar {
+    height: fit-content;
     
+}
+
+.search-bar input {
+    border-radius: 25px ;
+    text-align: center;
+}
+
+.search-bar i {
+ display: inline;
+ margin-right: 0.5rem;
+}
+ 
+.btn-search {
+    border-radius: 25px !important;
+    padding: 0 1rem 0 1rem;
 }
