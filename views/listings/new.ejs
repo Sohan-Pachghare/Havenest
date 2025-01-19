@@ -4,7 +4,7 @@
 
         <form method="POST" action="/listings" class="needs-validation" novalidate enctype="multipart/form-data">
             <div class="row">
-                <div class="col-8 offset-sm-3 offset-1"><!-- offset-3 moves "form" 3 col to right -->
+                <div class="col-8 offset-sm-2 offset-1"><!-- offset-3 moves "form" 3 col to right -->
                     <br>
                     <h2>Create a New Listing</h2>
                     <br>
@@ -26,10 +26,59 @@
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Upload Image</label>
-                        <input name="listing[image]" type="file" class="form-control">
+                        <input name="listing[image]" type="file" class="form-control" required>
                     </div>
+                    <div class="dropdown mb-3 d-grid">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Select Categories
+                        </button>
+                        <div class="dropdown-menu p-3" style="width: 100%">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[categories][]" value="New" id="New">
+                                <label class="form-check-label" for="New">New</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[categories][]" value="Trending" id="Trending">
+                                <label class="form-check-label" for="Trending">Trending</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[categories][]" value="Mountain top" id="Mountain top">
+                                <label class="form-check-label" for="Mountain top">Mountain top</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[categories][]" value="Arctic" id="Arctic">
+                                <label class="form-check-label" for="Arctic">Arctic</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[categories][]" value="Pool" id="Pool">
+                                <label class="form-check-label" for="Pool">Pool</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[categories][]" value="A-frames" id="A-frames">
+                                <label class="form-check-label" for="A-frames">A-frames</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[categories][]" value="Top cities" id="Top cities">
+                                <label class="form-check-label" for="Top cities">Top cities</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[categories][]" value="Historic" id="Historic">
+                                <label class="form-check-label" for="Historic">Historic</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[categories][]" value="Rooms" id="Rooms">
+                                <label class="form-check-label" for="Rooms">Rooms</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="listing[categories][]" value="Amazing views" id="Amazing views">
+                                <label class="form-check-label" for="Amazing views">Amazing views</label>
+                            </div>
+                            <!-- Add more categories as needed -->
+                        </div>
+                    </div>
+
                     <!-- merging price and country in one row -->
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col-md-4">
                             <label for="price" class="form-label">Price</label>
                             <input name="listing[price]" placeholder="2999" type="number" class="form-control" required>
@@ -48,25 +97,15 @@
                     </div>
                     <div class="mb-3">
                         <label for="location" class="form-label">Location</label>
-                        <input name="listing[location]" placeholder="Goa, North Goa." type="text" class="form-control"
-                            required>
+                        <input name="listing[location]" placeholder="Goa, North Goa." type="text" class="form-control" required>
                         <div class="invalid-feedback">
                             Invalid location
                         </div>
                     </div>
-                    <button type="submit" class="btn add-btn mb-4">Add</button>
+                    <div class="d-grid mt-2 mb-3">
+                    <button type="submit" class="btn btn-poppy-red mb-4">List Property</button>
+                    </div>
                 </div>
             </div>
         </form>
     </body>
-
-    <!-- seprate price and country 
-<div class="mb-3">
-    <label for="price" class="form-label">Price</label>
-    <input name="listing[price]"  placeholder="Price"  type="number" class="form-control">
-</div>
-<div class="mb-4">
-    <label for="country" class="form-label">Country</label>
-    <input name="listing[country]"  placeholder="Country"  type="text" class="form-control">
-</div> 
--->

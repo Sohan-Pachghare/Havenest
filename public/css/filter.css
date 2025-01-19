@@ -1,0 +1,27 @@
+#filters {
+    
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 5rem;
+    padding: 0 !important;
+}
+
+.filter-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    align-items: center;
+    text-align: center;
+    opacity: 0.5;
+    margin-left: 1.5rem;
+}
+
+.filter-button:hover {
+    opacity: 1;
+}
+
+.filter p {
+    font-size: 0.8rem;
+}
+

@@ -1,0 +1,105 @@
+<div id="filters" class="fixed-top bg-white">
+    <!-- New Filter -->
+    <form method="GET" action="/listings/search" class="col-auto filter mt-2 offset-1">
+        <input type="hidden" name="filter" value="New">
+        <button type="submit" class="filter-button">
+            <i class="fa-solid fa-star-of-life"></i>
+            <p>New</p>
+        </button>
+    </form>
+
+    <!-- Trending Filter -->
+    <form method="GET" action="/listings/search" class="col-auto filter mt-2">
+        <input type="hidden" name="filter" value="Trending">
+        <button type="submit" class="filter-button">
+            <i class="fa-solid fa-fire"></i>
+            <p>Trending</p>
+        </button>
+    </form>
+
+    <!-- Arctic Filter -->
+    <form method="GET" action="/listings/search" class="filter mt-2">
+        <input type="hidden" name="filter" value="Arctic">
+        <button type="submit" class="filter-button">
+            <i class="fa-regular fa-snowflake"></i>
+            <p>Arctic</p>
+        </button>
+    </form>
+
+    <!-- Mountain Top Filter -->
+    <form method="GET" action="/listings/search" class="filter mt-2">
+        <input type="hidden" name="filter" value="Mountain top">
+        <button type="submit" class="filter-button">
+            <i class="fa-solid fa-mountain-city"></i>
+            <p>Mountain top</p>
+        </button>
+    </form>
+
+    <!-- Pool Filter -->
+    <form method="GET" action="/listings/search" class="filter mt-2">
+        <input type="hidden" name="filter" value="Pool">
+        <button type="submit" class="filter-button">
+            <i class="fa-solid fa-person-swimming"></i>
+            <p>Pool</p>
+        </button>
+    </form>
+
+    <!-- A-frames Filter -->
+    <form method="GET" action="/listings/search" class="filter mt-2">
+        <input type="hidden" name="filter" value="A-frames">
+        <button type="submit" class="filter-button">
+            <i class="fa-solid fa-mound"></i>
+            <p>A-frames</p>
+        </button>
+    </form>
+
+    <!-- Top Cities Filter -->
+    <form method="GET" action="/listings/search" class="filter mt-2">
+        <input type="hidden" name="filter" value="Top cities">
+        <button type="submit" class="filter-button">
+            <i class="fa-regular fa-building"></i>
+            <p>Top cities</p>
+        </button>
+    </form>
+
+    <!-- Historic Filter -->
+    <form method="GET" action="/listings/search" class="filter mt-2">
+        <input type="hidden" name="filter" value="Historic">
+        <button type="submit" class="filter-button">
+            <i class="fa-brands fa-fort-awesome"></i>
+            <p>Historic</p>
+        </button>
+    </form>
+
+    <!-- Rooms Filter -->
+    <form method="GET" action="/listings/search" class="filter mt-2">
+        <input type="hidden" name="filter" value="Rooms">
+        <button type="submit" class="filter-button">
+            <i class="fa-solid fa-bed"></i>
+            <p>Rooms</p>
+        </button>
+    </form>
+
+    <!-- Amazing Views Filter -->
+    <form method="GET" action="/listings/search" class="filter mt-2">
+        <input type="hidden" name="filter" value="Amazing views">
+        <button type="submit" class="filter-button">
+            <i class="fa-solid fa-mountain-sun"></i>
+            <p>Amazing views</p>
+        </button>
+    </form>
+    <div class="ms-auto tax-toggle">
+        <div class="form-check form-switch form-check-reverse">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
+            <label class="form-check-label" for="flexSwitchCheckReverse">Display taxes</label>
+        </div>
+    </div>
+</div>
+
+<script>
+    let taxToggle = document.getElementById("flexSwitchCheckReverse");
+    taxToggle.addEventListener("click", () => {
+        let taxInfo = document.getElementsByClassName("")
+        console.log("clicked");
+    });
+</script>

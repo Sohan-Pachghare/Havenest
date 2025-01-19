@@ -66,9 +66,11 @@
                                             <p class="starability-result " data-rating="<%= review.rating %>"></p>
                                         </div>
                                         <p class="card-text mt-2"><%= review.comment %></p>
-                                        <form method="POST" action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=DELETE">
-                                            <button class="btn btn-sm btn-danger">Delete</button>
-                                        </form>
+                                        <div class="d-flex">
+                                            <form method="POST" action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=DELETE" class="ms-auto">
+                                                <button class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             <% } %>

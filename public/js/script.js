@@ -17,3 +17,8 @@
       }, false)
     })
   })()
+
+// Prevent dropdown from closing when clicking inside
+document.querySelector('.dropdown-menu').addEventListener('click', function(e) {
+  e.stopPropagation();
+});

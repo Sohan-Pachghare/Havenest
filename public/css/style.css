@@ -15,6 +15,7 @@ body {
 .navbar {
     height: 5rem;
     background-color: white;
+    /* z-index: 1021 !important; */
 }
 
 .fa-compass {
@@ -86,12 +87,11 @@ body {
     background-color: darkblue ;
     border-radius: 1rem;
 }
-
-/* new listing add-btn */
-.add-btn, 
-.edit-btn, 
-.show-edit-btn,
-.btn-review {
+.transition-shadow:hover {
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+/* new listing add-btn */  
+.btn-poppy-red {
     background-color: #fe424d !important;
     color: white !important;
     border: none !important;
@@ -103,4 +103,9 @@ body {
 }
 .btns {
     display: flex;
+}
+
+/* tax button "air_bnb/views/includes/filter.ejs" */
+.tax-toggle {
+    
 }

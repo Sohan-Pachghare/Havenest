@@ -3,7 +3,7 @@
     
     <form method="POST" action="/listings/<%= listing.id%>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
         <div class="row">
-            <div class="col-8 offset-sm-3 offset-1 ">
+            <div class="col-lg-8 col-md-10 col-sm-8 offset-sm-2  ">
                 <h2>Edit your listing</h2>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
@@ -19,9 +19,18 @@
                         Please provide description
                     </div>
                 </div>
+                <p>Original Image</p>
+                <div class="mb-3 d-flex justify-content-center">
+                    <img 
+                        src="<%= lowQualityImg %>" 
+                        alt="<%= listing.image.filename %>"
+                        class="img-fluid rounded shadow-sm"
+                    />
+                        
+                </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Upload Image</label>
-                    <input name="listing[image]" class="form-control" type="file" >
+                    <input name="listing[image]" class="form-control" type="file" />
                 </div>
                 <div class="row">
                     <div class="col-md-4 mb-3">
@@ -45,7 +54,7 @@
                     <div class="invalid-feedback">Invalid location</div>
                 </div>
                 
-                <button class="btn edit-btn mb-3" type="submit">Confirm</button>
+                <button class="btn btn-poppy-red mb-3" type="submit">Confirm</button>
             </div>
         </div>    
     </form>

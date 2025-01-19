@@ -8,7 +8,8 @@ const sampleListing = [
     },
     "price": 10065.60,
     "location": "Yorkshire",
-    "country": "United Kingdom"
+    "country": "United Kingdom", 
+    "categories": ['Rooms'],
   },
   {
     "title": "Modern Apartment",
@@ -19,7 +20,8 @@ const sampleListing = [
     },
     "price": 16776,
     "location": "Manhattan",
-    "country": "United States"
+    "country": "United States",
+    "categories": ['Top cities', 'Rooms'],
   },
   {
     "title": "Beachside Villa",
@@ -30,7 +32,8 @@ const sampleListing = [
     },
     "price": 41940,
     "location": "Malibu",
-    "country": "United States"
+    "country": "United States",
+    "categories": ['Pool', 'Rooms'],
   },
   {
     "title": "Rustic Cabin",
@@ -41,7 +44,8 @@ const sampleListing = [
     },
     "price": 12999,
     "location": "Aspen",
-    "country": "United States"
+    "country": "United States",
+    "categories": ['A-frames', 'Mountain top', 'Trending', 'Amazing views'],
   },
   {
     "title": "Urban Loft",
@@ -52,7 +56,8 @@ const sampleListing = [
     },
     "price": 25164,
     "location": "Berlin",
-    "country": "Germany"
+    "country": "Germany",
+    "categories": ['Top cities', 'Rooms', 'Trending',],
   },
   {
     "title": "Lakefront Bungalow",
@@ -63,7 +68,8 @@ const sampleListing = [
     },
     "price": 20970,
     "location": "Lake Tahoe",
-    "country": "United States"
+    "country": "United States",
+    "categories": ['Amazing views', 'A-frames', 'Trending', 'Pool'],
   },
   {
     "title": "Countryside Manor",
@@ -74,7 +80,8 @@ const sampleListing = [
     },
     "price": 50328,
     "location": "Cotswolds",
-    "country": "United Kingdom"
+    "country": "United Kingdom",
+    "categories": ['Rooms', 'Trending', 'Amazing views', 'New', 'Pool'],
   },
   {
     "title": "Tropical Retreat",
@@ -85,7 +92,8 @@ const sampleListing = [
     },
     "price": 67104,
     "location": "Maharashtra",
-    "country": "India"
+    "country": "India",
+    "categories": ['Pool', 'Amazing views', 'Rooms'],
   },
   {
     "title": "City Penthouse",
@@ -96,7 +104,8 @@ const sampleListing = [
     },
     "price": 83880,
     "location": "Dubai",
-    "country": "United Arab Emirates"
+    "country": "United Arab Emirates",
+    "categories": ['Top cities', 'Amazing views', 'Trending', 'Rooms'],
   },
   {
     "title": "Desert Oasis",
@@ -107,7 +116,8 @@ const sampleListing = [
     },
     "price": 33552,
     "location": "Marrakech",
-    "country": "Morocco"
+    "country": "Morocco",
+    "categories": ['Pool', 'Amazing views'],
   },
   {
     "title": "Historic Chateau",
@@ -118,7 +128,8 @@ const sampleListing = [
     },
     "price": 59999,
     "location": "Provence",
-    "country": "France"
+    "country": "France",
+    "categories": ['Historic', 'Amazing views'],
   },
   
   {
@@ -127,7 +138,8 @@ const sampleListing = [
     "image": { "url": "https://media.istockphoto.com/id/1335269094/photo/modern-forest-house.webp?a=1&b=1&s=612x612&w=0&k=20&c=ynT6YdXra22o1hhMHNts8MqVqNQZY4vwrMqABIexweo=", "filename": "listingImage" },
     "price": 15099,
     "location": "Black Forest",
-    "country": "Germany"
+    "country": "Germany",
+    "categories": ['Mountain top', 'Trending', 'Amazing views', 'A-frames'],
   },
   {
     "title": "Secluded Cabin",
@@ -135,7 +147,8 @@ const sampleListing = [
     "image": { "url": "https://plus.unsplash.com/premium_photo-1733864822386-a7f705c7fac5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fFNlY2x1ZGVkJTIwQ2FiaW58ZW58MHwwfDB8fHww", "filename": "listingImage" },
     "price": 8999,
     "location": "Rocky Mountains",
-    "country": "United States"
+    "country": "United States",
+    "categories": ['Mountain top', 'Trending', 'Amazing views', 'Rooms'],
   },
   {
     "title": "Luxury Yacht Stay",
@@ -143,7 +156,8 @@ const sampleListing = [
     "image": { "url": "https://plus.unsplash.com/premium_photo-1680831748191-d726a2f7b201?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "filename": "listingImage" },
     "price": 100699,
     "location": "Monaco",
-    "country": "Monaco"
+    "country": "Monaco",
+    "categories": ['New', 'Amazing views', 'Pool'],
   },
   {
     "title": "Snowy Chalet",
@@ -151,7 +165,8 @@ const sampleListing = [
     "image": { "url": "https://images.unsplash.com/photo-1550503736-c1a2c9033c03?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8U25vd3klMjBDaGFsZXR8ZW58MHwwfDB8fHww", "filename": "listingImage" },
     "price": 29999,
     "location": "Swiss Alps",
-    "country": "Switzerland"
+    "country": "Switzerland",
+    "categories": ['Arctic', 'Mountain top', 'Rooms'],
   },
   {
     "title": "Cozy Mountain Cabin",
@@ -159,7 +174,8 @@ const sampleListing = [
     "image": { "url": "https://plus.unsplash.com/premium_photo-1684863505736-c2016528804a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D", "filename": "listingImage" },
     "price": 9960,
     "location": "Aspen, Colorado",
-    "country": "United States"
+    "country": "United States",
+    "categories": ['Mountain top', 'Trending', 'Amazing views', 'A-frames'],
   },
   {
     "title": "Modern City Apartment",
@@ -167,7 +183,8 @@ const sampleListing = [
     "image": { "url": "https://plus.unsplash.com/premium_photo-1661963579906-f146cde83bf4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dG9reW9fYXBhcnRtZW50fGVufDB8fDB8fHww", "filename": "listingImage" },
     "price": 12450,
     "location": "Shibuya, Tokyo",
-    "country": "Japan"
+    "country": "Japan",
+    "categories": ['Top cities', 'Rooms', 'New'],
   },
   {
     "title": "Beachfront Bungalow",
@@ -175,7 +192,8 @@ const sampleListing = [
     "image": { "url": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmVhY2glMjBidW5nYWxvd3xlbnwwfHwwfHx8Mg%3D%3D", "filename": "listingImage" },
     "price": 16600,
     "location": "Kuta, Bali",
-    "country": "Indonesia"
+    "country": "Indonesia",
+    "categories": ['Top cities', 'Pool', 'Amazing views', 'Trending'],
   },
   {
     "title": "Historic French Chateau",
@@ -183,7 +201,8 @@ const sampleListing = [
     "image": { "url": "https://images.unsplash.com/photo-1705591932199-3f7ddd25bb1e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZyZW5jaCUyMGNoYXRlYXV8ZW58MHwwfDB8fHwy", "filename": "listingImage" },
     "price": 37350,
     "location": "Loire Valley, France",
-    "country": "France"
+    "country": "France",
+    "categories": ['Historic', 'Amazing views'],
   },
   {
     "title": "Luxury NYC Loft",
@@ -191,7 +210,8 @@ const sampleListing = [
     "image": { "url": "https://images.unsplash.com/photo-1664261421791-c25c5760f577?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bnljJTIwbG9mdHxlbnwwfDB8MHx8fDI%3D", "filename": "listingImage" },
     "price": 29050,
     "location": "Manhattan, New York City",
-    "country": "United States"
+    "country": "United States",
+    "categories": ['Top cities', 'Trending'],
   },
   {
     "title": "Rustic Countryside Cottage",
@@ -202,7 +222,8 @@ const sampleListing = [
     },
     "price": 8300,
     "location": "Cotswolds, England",
-    "country": "United Kingdom"
+    "country": "United Kingdom",
+    "categories": ['Amazing views', 'Rooms'],
   },
   {
     "title": "Luxury Penthouse with Pool",
@@ -213,7 +234,8 @@ const sampleListing = [
     },
     "price": 83000,
     "location": "Downtown Dubai",
-    "country": "United Arab Emirates"
+    "country": "United Arab Emirates",
+    "categories": ['Top cities'],
   },
   {
     "title": "Tropical Treehouse",
@@ -224,7 +246,8 @@ const sampleListing = [
     },
     "price": 14940,
     "location": "Monteverde, Costa Rica",
-    "country": "Costa Rica"
+    "country": "Costa Rica",
+    "categories": ['Mountain top', 'A-frames'],
   },
   {
     "title": "Scandinavian Lakeside Cabin",
@@ -235,7 +258,8 @@ const sampleListing = [
     },
     "price": 18260,
     "location": "Stockholm Archipelago, Sweden",
-    "country": "Sweden"
+    "country": "Sweden",
+    "categories": ['Pool', 'Mountain top'],
   },
   {
     "title": "Icelandic Geothermal Retreat",
@@ -246,7 +270,8 @@ const sampleListing = [
     },
     "price": 41500,
     "location": "Reykjavik, Iceland",
-    "country": "Iceland"
+    "country": "Iceland",
+    "categories": ['Pool', 'New'],
   }
 
   // More listings...
