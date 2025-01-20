@@ -36,7 +36,7 @@
 .tax-toggler {
     border: 1px solid rgb(128, 128, 128);
     border-radius: 1rem;
-    margin-right: 1rem;
+    margin-right: 3rem;
     padding: 0.5rem;
     display: flex;
 }

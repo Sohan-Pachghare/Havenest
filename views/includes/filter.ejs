@@ -1,15 +1,15 @@
 <div id="filters" class="fixed-top bg-white">
     <!-- Navbar toggle button -->
     <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid bg-light bg-white ">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-controls="filterMenu" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <div class="container-fluid bg-white ">
+            <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-controls="filterMenu" aria-expanded="false" aria-label="Toggle navigation" style="font-size: 1.2rem;">
+                <span class="navbar-toggler-icon" ></span>
                 Filters
             </button>
 
             <!-- Collapsible Filter Menu -->
             <div class="collapse navbar-collapse" id="filterMenu">
-                <div class="d-flex flex-column flex-lg-row align-items-center filters ">
+                <div class="d-flex flex-column flex-lg-row align-items-center  filters ">
                     <!-- New Filter -->
                     <form method="GET" action="/listings/search" class="col-auto filter mt-2 offset-2">
                         <input type="hidden" name="filter" value="New">
