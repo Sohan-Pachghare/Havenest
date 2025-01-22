@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
-const dbUrl =  process.env.DATABASE_URL;
+const dbUrl =  process.env.DATABASE_URL; // .env not accessible 
 
 async function main() {
     await mongoose.connect(dbUrl);
@@ -12,7 +12,7 @@ main()
     console.log("Connected successfully")
 })
  .catch((err) => { 
-    console.log("Error while connecting to DB")
+    console.log("Error while connecting to DB") //throws error because dbUrl is undefine
 });
 
 
