@@ -1,5 +1,21 @@
 const sampleListing = [
   {
+    "title": "Classic Luxurious Vila",
+    "description": "This classic luxurious villa in Jaipur blends traditional Rajasthani architecture with modern amenities, offering a regal living experience. With six opulent bedrooms, a private pool, and lush gardens, it embodies the grandeur of Jaipur's royal heritage.",
+    "image": {
+      "url": "https://res.cloudinary.com/dpkm5qviq/image/upload/v1737550601/Havenest-DEV/rl69pnodd0r8nnwe7upl.avif",
+      "filename": "Havenest-DEV/rl69pnodd0r8nnwe7upl"
+    },
+    "price": 2999,
+    "location": "Jaipur, Rajasthan",
+    "country": "India",
+    "categories": [],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [75.8189817, 26.9154576]
+    }
+  },
+  {
     "title": "Cozy Cottage",
     "description": "A charming two-bedroom cottage in the countryside.",
     "image": { 

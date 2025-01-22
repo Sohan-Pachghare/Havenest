@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
+const dbUrl =  process.env.DATABASE_URL;
 
-let dbUrl =  process.env.DATABASE_URL;
 async function main() {
     await mongoose.connect(dbUrl);
 }
