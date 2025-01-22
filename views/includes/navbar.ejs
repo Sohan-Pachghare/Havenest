@@ -6,20 +6,21 @@
       </button>
       <div class="collapse navbar-collapse bg-white" id="navbarNavAltMarkup">
         <div class="navbar-nav ">
-          <a class="nav-link" href="/listings">Explore</a>
+          <a class="nav-link" href="/listings"><h4>Havenest</h4></a>
         </div>
         <!-- search  -->
-        <nav class="navbar bg-body-light ms-auto search-bar">
-          <div class="container-fluid">
-            <form class="d-flex"  method="GET" action="/listings/search">
-              <input class="form-control me-2 " type="search" name="filter" placeholder="Search">
-              <button class="btn btn-poppy-red btn-search" type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>Search
-              </button>
-            </form>
-          </div>
-        </nav>
-
+        <% if((currPath !== "/signup") && (currPath !== "/login") ) { %>
+          <nav class="navbar bg-body-light ms-auto search-bar">
+            <div class="container-fluid">
+              <form class="d-flex"  method="GET" action="/listings/search">
+                <input class="form-control me-2 " type="search" name="filter" placeholder="Search">
+                <button class="btn btn-poppy-red btn-search" type="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>Search
+                </button>
+              </form>
+            </div>
+          </nav>
+        <% } %>
         <div class="navbar-nav ms-auto">
           <a class="nav-link" href="/listings/new">Add New Listing</a>
           <% if(!currentUser) { %>

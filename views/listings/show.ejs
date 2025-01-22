@@ -1,18 +1,21 @@
 <% layout("./layouts/boilerplate.ejs") %>
+<script>
+    const coordinates = <%- JSON.stringify(listing.geometry.coordinates) %>; // error will vanish after JSON method execution
+</script>
 <body>
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 col-sm-12">
                 <h3 class="text-center mb-4"><%= listing.title %></h3>
-                
+                <!-- Listing info -->
                 <div class="card  listing-card mb-4">
                     <img src="<%= listing.image.url %>" class="card-img-top" alt="listing img">
                     <div class="card-body">
                         <b>Owner : <%= listing.owner.username %></b>
                         <p class="card-text">
-                            <%= listing.description %> <br>
-                            <b class="fs-5">₹ <%= listing.price.toLocaleString("en-IN") %></b> <small>per night</small><br>
-                            <i class="bi bi-geo-alt"></i> <%= listing.location %>, <%= listing.country %>
+                            <p><%= listing.description %></p>
+                            <P><b class="fs-5">₹ <%= listing.price.toLocaleString("en-IN") %></b> <small>per night</small><br></P>
+                            <i class="bi bi-geo-alt"><%= listing.location %>, <%= listing.country %></i> 
                         </p>
                     </div>
                     
@@ -24,10 +27,11 @@
                         </form>
                     </div>
                     <% } %>
-                    <!-- Review Section -->
+                    <!-- Get Review Section -->
                     <div class="p-3">
                         <% if(currentUser) { %>
-                        <h4 class="mb-3">Leave a review</h4>
+                        <hr>
+                        <h4 class="mb-3">Leave a review :</h4>
                         <form method="POST" action="/listings/<%= listing.id %>/reviews" class="needs-validation mb-4" novalidate>
                             <div class="mb-3">
                                 <fieldset class="starability-fade">
@@ -54,29 +58,37 @@
                             <button class="btn btn-dark">Submit</button>
                         </form>
                         <% } %>
-                        <!-- Reviews List -->
-                        <h4 class="mb-3">All Reviews</h4>
-                        <div class="reviews-container">
-                            <div class="row ">
-                            <% for(review of listing.reviews) { %>
-                                <div class="card col-lg-5 ms-2 mb-3">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between">
-                                            <b class="text-muted">@<%= review.author.username %></b>
-                                            <p class="starability-result " data-rating="<%= review.rating %>"></p>
-                                        </div>
-                                        <p class="card-text mt-2"><%= review.comment %></p>
-                                        <div class="d-flex">
-                                            <form method="POST" action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=DELETE" class="ms-auto">
-                                                <button class="btn btn-sm btn-danger">Delete</button>
-                                            </form>
+                        <!--show Reviews List -->
+                        <% if(listing.reviews.length) {%>
+                            <div class="reviews-container">
+                                <hr>
+                                <h4 class="mb-3">All Reviews :</h4>
+                                <div class="row ">
+                                <% for(review of listing.reviews) { %>
+                                    <div class="card col-lg-5 ms-2 mb-3">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between">
+                                                <b class="text-muted">@<%= review.author.username %></b>
+                                                <p class="starability-result " data-rating="<%= review.rating %>"></p>
+                                            </div>
+                                            <p class="card-text mt-2"><%= review.comment %></p>
+                                            <% if(currentUser && currentUser.id === listing.owner.id ) { %>
+                                                <div class="d-flex">
+                                                    <form method="POST" action="/listings/<%= listing.id %>/reviews/<%= review.id %>?_method=DELETE" class="ms-auto">
+                                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                                    </form>
+                                                </div>
+                                            <% } %>
                                         </div>
                                     </div>
-                                </div>
-                            <% } %>
-                        </div>
-                        </div>
+                                <% } %>
+                            </div>
+                        <% } %>
+                        <hr>
                     </div>
+                    <!-- Map -->
+                    <b class="map-heading">Where you'll be :</b>
+                    <div id="map" class="mt-2 mb-3"></div>
                 </div>
             </div>
         </div>

@@ -17,13 +17,15 @@ const User = require('./models/user');
 const LocalStrategy = require("passport-local");
 const passport = require("passport");
 const routerUser = require("./routes/user");
+const MongoStore = require("connect-mongo"); 
+const dbUrl = process.env.DATABASE_URL;
 
 main()
     .then(() => { console.log("connected to mongoDB"); })
     .catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/wanderlust');
+    await mongoose.connect(dbUrl); 
 }
 
 // Body parsing middleware 
@@ -39,7 +41,20 @@ app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+        secret: process.env.SESSION_SECRET
+    },
+    touchAfter: 24 * 60 * 60 //Interval (in seconds) between session updates.
+  })
+
+  store.on("error", (err) => {
+    console.log("Error in Mongo Session Store", err);
+  });
+
 const sessionOptions = {
+    store,
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
@@ -55,6 +70,8 @@ const sessionOptions = {
 //     res.send("on root route");
 // });
 
+
+
 app.use(session(sessionOptions));
 app.use(flash())
 
@@ -65,7 +82,7 @@ passport.use(new LocalStrategy(User.authenticate()))
 passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
-//throw alerts
+
 app.use((req, res, next) => {
     res.locals.success = req.flash("success")
     res.locals.error = req.flash("error")

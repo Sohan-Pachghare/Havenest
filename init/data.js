@@ -10,18 +10,36 @@ const sampleListing = [
     "location": "Yorkshire",
     "country": "United Kingdom", 
     "categories": ['Rooms'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.0803, 53.9599] // Example coordinates for Yorkshire
+    }
   },
   {
-    "title": "Modern Apartment",
-    "description": "A sleek and modern studio apartment in the heart of the city.",
-    "image": { 
-      "url": "https://images.unsplash.com/photo-1683629357846-30eacff8f615?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG1vZGVybiUyMHJlc2lkZW50aWFsfGVufDB8MHwwfHx8MA%3D%3D",
-      "filename": "listingImage"
-    },
-    "price": 16776,
-    "location": "Manhattan",
+    "title": "Forest Hideaway",
+    "description": "A tranquil hideaway surrounded by towering trees and wildlife.",
+    "image": { "url": "https://media.istockphoto.com/id/1335269094/photo/modern-forest-house.webp?a=1&b=1&s=612x612&w=0&k=20&c=ynT6YdXra22o1hhMHNts8MqVqNQZY4vwrMqABIexweo=", "filename": "listingImage" },
+    "price": 15099,
+    "location": "Black Forest",
+    "country": "Germany",
+    "categories": ['Mountain top', 'Trending', 'Amazing views', 'A-frames'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [8.2026, 48.1079] // Example coordinates for Black Forest
+    }
+  },
+  {
+    "title": "Cozy Mountain Cabin",
+    "description": "A serene escape in the heart of the Rocky Mountains. Perfect for hiking and nature lovers.",
+    "image": { "url": "https://plus.unsplash.com/premium_photo-1684863505736-c2016528804a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D", "filename": "listingImage" },
+    "price": 9960,
+    "location": "Aspen, Colorado",
     "country": "United States",
-    "categories": ['Top cities', 'Rooms'],
+    "categories": ['Mountain top', 'Trending', 'Amazing views', 'A-frames'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-106.8175, 39.1911] // Example coordinates for Aspen, Colorado
+    }
   },
   {
     "title": "Beachside Villa",
@@ -34,6 +52,10 @@ const sampleListing = [
     "location": "Malibu",
     "country": "United States",
     "categories": ['Pool', 'Rooms'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-118.7798, 34.0259] // Example coordinates for Malibu
+    }
   },
   {
     "title": "Rustic Cabin",
@@ -46,6 +68,10 @@ const sampleListing = [
     "location": "Aspen",
     "country": "United States",
     "categories": ['A-frames', 'Mountain top', 'Trending', 'Amazing views'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-106.8175, 39.1911] // Example coordinates for Aspen
+    }
   },
   {
     "title": "Urban Loft",
@@ -57,7 +83,11 @@ const sampleListing = [
     "price": 25164,
     "location": "Berlin",
     "country": "Germany",
-    "categories": ['Top cities', 'Rooms', 'Trending',],
+    "categories": ['Top cities', 'Rooms', 'Trending'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [13.4050, 52.5200] // Example coordinates for Berlin
+    }
   },
   {
     "title": "Lakefront Bungalow",
@@ -70,6 +100,10 @@ const sampleListing = [
     "location": "Lake Tahoe",
     "country": "United States",
     "categories": ['Amazing views', 'A-frames', 'Trending', 'Pool'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-120.0324, 39.0968] // Example coordinates for Lake Tahoe
+    }
   },
   {
     "title": "Countryside Manor",
@@ -82,6 +116,10 @@ const sampleListing = [
     "location": "Cotswolds",
     "country": "United Kingdom",
     "categories": ['Rooms', 'Trending', 'Amazing views', 'New', 'Pool'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.8333, 51.8333] // Example coordinates for Cotswolds
+    }
   },
   {
     "title": "Tropical Retreat",
@@ -94,6 +132,10 @@ const sampleListing = [
     "location": "Maharashtra",
     "country": "India",
     "categories": ['Pool', 'Amazing views', 'Rooms'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [73.7898, 18.5204] // Example coordinates for Maharashtra
+    }
   },
   {
     "title": "City Penthouse",
@@ -106,6 +148,10 @@ const sampleListing = [
     "location": "Dubai",
     "country": "United Arab Emirates",
     "categories": ['Top cities', 'Amazing views', 'Trending', 'Rooms'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.2708, 25.2048] // Example coordinates for Dubai
+    }
   },
   {
     "title": "Desert Oasis",
@@ -118,6 +164,10 @@ const sampleListing = [
     "location": "Marrakech",
     "country": "Morocco",
     "categories": ['Pool', 'Amazing views'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-8.0081, 31.6295] // Example coordinates for Marrakech
+    }
   },
   {
     "title": "Historic Chateau",
@@ -130,16 +180,10 @@ const sampleListing = [
     "location": "Provence",
     "country": "France",
     "categories": ['Historic', 'Amazing views'],
-  },
-  
-  {
-    "title": "Forest Hideaway",
-    "description": "A tranquil hideaway surrounded by towering trees and wildlife.",
-    "image": { "url": "https://media.istockphoto.com/id/1335269094/photo/modern-forest-house.webp?a=1&b=1&s=612x612&w=0&k=20&c=ynT6YdXra22o1hhMHNts8MqVqNQZY4vwrMqABIexweo=", "filename": "listingImage" },
-    "price": 15099,
-    "location": "Black Forest",
-    "country": "Germany",
-    "categories": ['Mountain top', 'Trending', 'Amazing views', 'A-frames'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [5.0424, 43.9352] // Example coordinates for Provence
+    }
   },
   {
     "title": "Secluded Cabin",
@@ -149,6 +193,10 @@ const sampleListing = [
     "location": "Rocky Mountains",
     "country": "United States",
     "categories": ['Mountain top', 'Trending', 'Amazing views', 'Rooms'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-105.5506, 39.1130] // Example coordinates for Rocky Mountains
+    }
   },
   {
     "title": "Luxury Yacht Stay",
@@ -158,6 +206,10 @@ const sampleListing = [
     "location": "Monaco",
     "country": "Monaco",
     "categories": ['New', 'Amazing views', 'Pool'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [7.4236, 43.7384] // Example coordinates for Monaco
+    }
   },
   {
     "title": "Snowy Chalet",
@@ -167,15 +219,26 @@ const sampleListing = [
     "location": "Swiss Alps",
     "country": "Switzerland",
     "categories": ['Arctic', 'Mountain top', 'Rooms'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [8.2275, 46.8182] // Example coordinates for Swiss Alps
+    }
   },
   {
-    "title": "Cozy Mountain Cabin",
-    "description": "A serene escape in the heart of the Rocky Mountains. Perfect for hiking and nature lovers.",
-    "image": { "url": "https://plus.unsplash.com/premium_photo-1684863505736-c2016528804a?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D", "filename": "listingImage" },
-    "price": 9960,
-    "location": "Aspen, Colorado",
+    "title": "Modern Apartment",
+    "description": "A sleek and modern studio apartment in the heart of the city.",
+    "image": { 
+      "url": "https://images.unsplash.com/photo-1683629357846-30eacff8f615?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fG1vZGVybiUyMHJlc2lkZW50aWFsfGVufDB8MHwwfHx8MA%3D%3D",
+      "filename": "listingImage"
+    },
+    "price": 16776,
+    "location": "Manhattan",
     "country": "United States",
-    "categories": ['Mountain top', 'Trending', 'Amazing views', 'A-frames'],
+    "categories": ['Top cities', 'Rooms'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-73.9712, 40.7831] // Example coordinates for Manhattan
+    }
   },
   {
     "title": "Modern City Apartment",
@@ -185,6 +248,10 @@ const sampleListing = [
     "location": "Shibuya, Tokyo",
     "country": "Japan",
     "categories": ['Top cities', 'Rooms', 'New'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [139.7000, 35.6580] // Example coordinates for Shibuya, Tokyo
+    }
   },
   {
     "title": "Beachfront Bungalow",
@@ -194,6 +261,10 @@ const sampleListing = [
     "location": "Kuta, Bali",
     "country": "Indonesia",
     "categories": ['Top cities', 'Pool', 'Amazing views', 'Trending'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [115.1715, -8.7228] // Example coordinates for Kuta, Bali
+    }
   },
   {
     "title": "Historic French Chateau",
@@ -203,6 +274,10 @@ const sampleListing = [
     "location": "Loire Valley, France",
     "country": "France",
     "categories": ['Historic', 'Amazing views'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [0.4571, 47.3591] // Example coordinates for Loire Valley
+    }
   },
   {
     "title": "Luxury NYC Loft",
@@ -212,6 +287,10 @@ const sampleListing = [
     "location": "Manhattan, New York City",
     "country": "United States",
     "categories": ['Top cities', 'Trending'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-73.9712, 40.7831] // Example coordinates for Manhattan
+    }
   },
   {
     "title": "Rustic Countryside Cottage",
@@ -224,6 +303,10 @@ const sampleListing = [
     "location": "Cotswolds, England",
     "country": "United Kingdom",
     "categories": ['Amazing views', 'Rooms'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-1.8333, 51.8333] // Example coordinates for Cotswolds
+    }
   },
   {
     "title": "Luxury Penthouse with Pool",
@@ -236,6 +319,10 @@ const sampleListing = [
     "location": "Downtown Dubai",
     "country": "United Arab Emirates",
     "categories": ['Top cities'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [55.2708, 25.2048] // Example coordinates for Dubai
+    }
   },
   {
     "title": "Tropical Treehouse",
@@ -248,6 +335,10 @@ const sampleListing = [
     "location": "Monteverde, Costa Rica",
     "country": "Costa Rica",
     "categories": ['Mountain top', 'A-frames'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-84.8207, 10.3157] // Example coordinates for Monteverde
+    }
   },
   {
     "title": "Scandinavian Lakeside Cabin",
@@ -260,6 +351,10 @@ const sampleListing = [
     "location": "Stockholm Archipelago, Sweden",
     "country": "Sweden",
     "categories": ['Pool', 'Mountain top'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [18.6435, 59.3293] // Example coordinates for Stockholm Archipelago
+    }
   },
   {
     "title": "Icelandic Geothermal Retreat",
@@ -272,9 +367,11 @@ const sampleListing = [
     "location": "Reykjavik, Iceland",
     "country": "Iceland",
     "categories": ['Pool', 'New'],
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-21.8278, 64.1283] // Example coordinates for Reykjavik
+    }
   }
-
-  // More listings...
 ];
 
 module.exports = { data: sampleListing };

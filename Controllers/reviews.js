@@ -17,7 +17,7 @@ module.exports.createReview = async (req, res) => {
 
 module.exports.deleteReview = async (req, res) => {
     let { id, reviewId } = req.params;
-    /* $pull is operator which removes from an existing array all instances of a value or values that match a specified condition */
+    /* $pull  removes from an existing array all instances of a value or values that match a specified condition */
     await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
     //delete review from reviews collection
     await Review.findByIdAndDelete(reviewId);
