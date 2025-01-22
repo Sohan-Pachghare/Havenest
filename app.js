@@ -65,12 +65,10 @@ const sessionOptions = {
     }
 }
 
-// //root route
-// app.get("/", (req, res) => {
-//     res.send("on root route");
-// });
-
-
+//root route
+app.get("/", (req, res) => {
+    res.redirect("https://havenest.onrender.com/listings");
+});
 
 app.use(session(sessionOptions));
 app.use(flash())
