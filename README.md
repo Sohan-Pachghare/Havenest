@@ -1,28 +1,72 @@
-# Havenest
+# Havenest - Your Home Away From Home
 
-An Airbnb clone 
-Feel free to click the link below to explore the website and discover more! \n
-[Click_Me to Visit Project](https://havenest.onrender.com/listings)
+Havenest is a full-stack Airbnb clone that allows users to list and browse accommodations worldwide.
 
-Getting Started
-To get started with this practice project, follow these steps:
+## Live Demo
 
-Clone the repository:
+[Visit Havenest](https://havenest.onrender.com/listings)
 
-bash
+## Features
+
+- User authentication and authorization
+- Property listing creation and management
+- Filter accommodations
+- Booking system
+- User reviews and ratings
+- Responsive design for all devices
+
+## Technologies Used
+
+- Frontend: Bootstrap
+- Backend: Node.js, Express
+- Database: MongoDB
+- Authentication: Passport.js
+- Cloud Storage: Cloudinary
+- Deployment: Render
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm
+- MongoDB
+
+### Installation
+
+1. Clone the repository
+
+```bash
 git clone https://github.com/Sohan-Pachghare/Clone-Air_BNB.git
-Navigate to the project directory:
+```
 
-bash
+2. Navigate to project directory
+
+```bash
 cd Clone-Air_BNB
-Install the dependencies:
+```
 
-bash
+3. Install dependencies
+
+```bash
 npm install
-Start the development server:
+```
 
-bash
+4. Set up environment variables
+   Create a `.env` file in the root directory and add necessary environment variables.
+
+5. Start the development server
+
+```bash
 npm start
+```
 
-Contact
-For any inquiries or support, please contact us at sohanpachghare37@gmail.com
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## Contact
+
+- Developer: Sohan Pachghare
+- Email: sohanpachghare17@gmail.com
+- GitHub: [Sohan-Pachghare](https://github.com/Sohan-Pachghare)
