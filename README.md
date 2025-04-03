@@ -6,23 +6,6 @@ Havenest is a full-stack Airbnb clone that allows users to list and browse accom
 
 [Visit Havenest](https://havenest.onrender.com/listings)
 
-## Features
-
-- User authentication and authorization
-- Property listing creation and management
-- Filter accommodations
-- Booking system
-- User reviews and ratings
-- Responsive design for all devices
-
-## Technologies Used
-
-- Frontend: Bootstrap
-- Backend: Node.js, Express
-- Database: MongoDB
-- Authentication: Passport.js
-- Cloud Storage: Cloudinary
-- Deployment: Render
 
 ## Getting Started
 
@@ -61,12 +44,28 @@ npm install
 npm start
 ```
 
+## Features
+
+- User authentication and authorization
+- Property listing creation and management
+- Filter accommodations
+- Booking system
+- User reviews and ratings
+- Responsive design for all devices
+
+## Technologies Used
+
+- Frontend: Bootstrap
+- Backend: Node.js, Express
+- Database: MongoDB
+- Authentication: Passport.js
+- Cloud Storage: Cloudinary
+- Deployment: Render
+
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Contact
-
-- Developer: Sohan Pachghare
 - Email: sohanpachghare17@gmail.com
-- GitHub: [Sohan-Pachghare](https://github.com/Sohan-Pachghare)
