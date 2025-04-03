@@ -41,7 +41,7 @@ npm install
 5. Start the development server
 
 ```bash
-npm start
+node app.js
 ```
 
 ## Features
