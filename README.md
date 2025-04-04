@@ -3,7 +3,7 @@
 Havenest is a full-stack Airbnb clone that allows users to list and browse accommodations worldwide.
 
 
-##[Live Demo](https://havenest.onrender.com/listings)
+## [Live Demo](https://havenest.onrender.com/listings)
 
 
 ## Getting Started
