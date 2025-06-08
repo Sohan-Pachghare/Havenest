@@ -18,7 +18,7 @@ Havenest a tours & travels website that allows to list and browse accommodations
 1. Clone the repository
 
 ```bash
-git clone https://github.com/Sohan-Pachghare/Clone-Air_BNB.git
+https://github.com/Sohan-Pachghare/Havenest.git
 ```
 
 2. Navigate to project directory
