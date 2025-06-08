@@ -24,7 +24,7 @@ https://github.com/Sohan-Pachghare/Havenest.git
 2. Navigate to project directory
 
 ```bash
-cd Clone-Air_BNB
+cd Havenest
 ```
 
 3. Install dependencies
