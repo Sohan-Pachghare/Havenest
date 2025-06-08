@@ -1,7 +1,6 @@
 # Havenest - Your Home Away From Home
 
-Havenest is a full-stack Airbnb clone that allows users to list and browse accommodations worldwide.
-
+Havenest a tours & travels website that allows to list and browse accommodations.
 
 ## [Live Demo](https://havenest.onrender.com/listings)
 
