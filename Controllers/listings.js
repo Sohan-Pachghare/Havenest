@@ -84,3 +84,12 @@ module.exports.filterListings = async (req, res) => {
     const allListings = await Listing.find({});
     res.render("./listings/filter.ejs", { filter, allListings });
 }
+
+module.exports.renderPaymentForm = async (req, res) => {
+    const listing = await Listing.findById(req.params.id);
+    if (!listing) {
+        req.flash("error", "Requested Listing Does Not Exist.");
+        return res.redirect("/listings");
+    }
+    res.render("./listings/payment.ejs", { listing });
+};

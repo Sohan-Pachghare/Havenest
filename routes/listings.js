@@ -22,6 +22,7 @@ router.get("/new", isLoggedIn, ctrlListings.renderNewForm);
 
 router.get('/search', ctrlListings.filterListings);
 
+router.get("/:id/payment", isLoggedIn, wrapAsync(ctrlListings.renderPaymentForm));
 
 // Update route
 router.get("/:id/edit",
@@ -30,7 +31,7 @@ router.get("/:id/edit",
     wrapAsync(ctrlListings.renderEditForm)
 );
 
-// Below is an general path so keep it down as possible
+// Update route
 router.route("/:id")
     .put(
         isLoggedIn,
