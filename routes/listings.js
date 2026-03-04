@@ -28,6 +28,12 @@ router.post(
     wrapAsync(ctrlListings.generateDescription)
 );
 
+router.post(
+    "/generate-description",
+    isLoggedIn,
+    wrapAsync(ctrlListings.generateDescription)
+);
+
 
 // Update route
 router.get("/:id/edit",
@@ -36,7 +42,7 @@ router.get("/:id/edit",
     wrapAsync(ctrlListings.renderEditForm)
 );
 
-// Below is an general path so keep it down as possible
+// Update route
 router.route("/:id")
     .put(
         isLoggedIn,

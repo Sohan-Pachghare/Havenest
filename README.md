@@ -1,7 +1,6 @@
 # Havenest - Your Home Away From Home
 
-Havenest is a full-stack Airbnb clone that allows users to list and browse accommodations worldwide.
-
+Havenest a tours & travels website that allows to list and browse accommodations.
 
 ## [Live Demo](https://havenest.onrender.com/listings)
 
@@ -19,13 +18,13 @@ Havenest is a full-stack Airbnb clone that allows users to list and browse accom
 1. Clone the repository
 
 ```bash
-git clone https://github.com/Sohan-Pachghare/Clone-Air_BNB.git
+https://github.com/Sohan-Pachghare/Havenest.git
 ```
 
 2. Navigate to project directory
 
 ```bash
-cd Clone-Air_BNB
+cd Havenest
 ```
 
 3. Install dependencies
