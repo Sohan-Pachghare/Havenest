@@ -22,6 +22,12 @@ router.get("/new", isLoggedIn, ctrlListings.renderNewForm);
 
 router.get('/search', ctrlListings.filterListings);
 
+router.post(
+    "/generate-description",
+    isLoggedIn,
+    wrapAsync(ctrlListings.generateDescription)
+);
+
 
 // Update route
 router.get("/:id/edit",

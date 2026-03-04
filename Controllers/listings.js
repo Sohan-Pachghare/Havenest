@@ -1,5 +1,9 @@
 const Listing = require("../models/listing");
-const axios = require('axios');
+const axios = require("axios");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const geminiModel = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
 
 module.exports.index = async (req, res) => {
     const allListings = await Listing.find({});
@@ -31,6 +35,56 @@ module.exports.createListing = async (req, res) => {
     req.flash("success", "New Listing Created!");
     res.redirect("/listings");
 }
+
+module.exports.generateDescription = async (req, res) => {
+    try {
+        const { title, location, categories } = req.body;
+
+        const safeTitle = typeof title === "string" ? title.trim() : "";
+        const safeLocation = typeof location === "string" ? location.trim() : "";
+        const categoryArray = Array.isArray(categories) ? categories : [];
+        const categoriesText = categoryArray.filter(Boolean).join(", ");
+
+        if (!safeTitle && !safeLocation && categoryArray.length === 0) {
+            return res.status(400).json({
+                error: "Please provide at least a title, location, or one category.",
+            });
+        }
+
+        const prompt = `
+You are an expert copywriter for Airbnb-style vacation rentals.
+Write a short, engaging property description in 3–4 sentences.
+
+Details:
+- Title: ${safeTitle || "Not specified"}
+- Location: ${safeLocation || "Not specified"}
+- Categories / vibe: ${categoriesText || "Not specified"}
+
+Focus on the experience, atmosphere, and ideal guests.
+Do not use markdown, headings, or bullet points—return plain text only.
+Avoid repeating the title or location verbatim in every sentence.
+        `.trim();
+
+        const result = await geminiModel.generateContent(prompt);
+        const response = await result.response;
+        const generatedText = (response && typeof response.text === "function")
+            ? response.text().trim()
+            : "";
+
+        if (!generatedText) {
+            return res.status(500).json({
+                error: "AI did not return any description. Please try again.",
+            });
+        }
+
+        res.json({ description: generatedText });
+    } catch (err) {
+        console.error("Error generating AI description:", err);
+        res.status(500).json({
+            error: "Failed to generate description. Please try again later.",
+        });
+    }
+};
 
 module.exports.renderEditForm = async (req, res) => {
     let listing = await Listing.findById(req.params.id);

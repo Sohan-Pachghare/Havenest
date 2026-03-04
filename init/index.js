@@ -1,8 +1,9 @@
+require('dotenv').config({ path: "../.env" })
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
-const dbUrl =  process.env.DATABASE_URL; // .env not accessible 
 
+const dbUrl =  process.env.DATABASE_URL;
 async function main() {
     await mongoose.connect(dbUrl);
 }
@@ -12,7 +13,7 @@ main()
     console.log("Connected successfully")
 })
  .catch((err) => { 
-    console.log("Error while connecting to DB") //throws error because dbUrl is undefine
+    console.log("Error while connecting to DB");
 });
 
 
@@ -22,7 +23,7 @@ const initDB = async () => {
     // add owner property to data.
     initData.data =initData.data.map((obj) => ({
         ...obj,
-        owner: '678fa5f58538705cfc383b0e',
+        owner: '6961fefffffce437da660087',
     }));
 
     await Listing.insertMany(initData.data);
